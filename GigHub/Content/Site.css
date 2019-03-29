@@ -42,8 +42,13 @@ span.field-validation-error {
     color: #fff;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: rgba(205, 40, 39, 0.55);
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: rgba(205, 40, 39, 0.55);
+    color: #fff;
 }
 
 .dropdown-menu {
@@ -51,12 +56,15 @@ span.field-validation-error {
     -webkit-box-shadow: none;
 }
 
+.dropdown-toggle {
+    color: #fff
+}
+
 .navbar-brand {
     font-weight: 700;
 }
 
 body {
-
     font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 17px;
     line-height: 1.42857143;
@@ -86,3 +94,4 @@ body {
      -ms-border-radius: 9px;
      border-radius: 9px;
  }
+
