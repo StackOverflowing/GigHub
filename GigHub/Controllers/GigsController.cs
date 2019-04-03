@@ -39,6 +39,32 @@ namespace GigHub.Controllers
         }
 
         [Authorize]
+        public ActionResult Following()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var followings = _context.Followings
+                .Where(f => f.FollowerId == userId)
+                .Select(f => f.FolloweeId)
+                .ToList();
+
+            var gigs = _context.Gigs
+                .Where(g => followings.Contains(g.ArtistId))
+                .Include(g => g.Artist)
+                .Include(g => g.Genre)
+                .ToList();
+
+            var viewModel = new GigsViewModel()
+            {
+                UpcomingGigs = gigs,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Artsts I'm Following"
+            };
+
+            return View("Gigs", viewModel);
+        }
+
+        [Authorize]
         public ActionResult Create()
         {
             var viewModel = new GigFormViewModel
